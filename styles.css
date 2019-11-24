@@ -36,56 +36,69 @@ p {
 #line_2 {
   fill: none;
   stroke: orange;
-  stroke-width: 1.5;
+  stroke-width: 2.5;
+  opacity: 0.3;
   /*stroke-dasharray: 1px;*/
 }
-
 
 #line_3 {
   fill: none;
   stroke: white;
-  stroke-width: 1.5;
+  stroke-width: 2.5;
+  opacity: 0.3;
+
   /*stroke-dasharray: 1px;*/
 }
 
 #line_4 {
   fill: none;
   stroke: red;
-  stroke-width: 1.5;
+  stroke-width: 2.5;
+  opacity: 0.3;
+
   /*stroke-dasharray: 1px;*/
 }
 
 #line_5 {
   fill: none;
   stroke: green;
-  stroke-width: 1.5;
+  stroke-width: 2.5;
+  opacity: 0.3;
+
   /*stroke-dasharray: 1px;*/
 }
 
 #line_6 {
   fill: none;
-  stroke: peru;
-  stroke-width: 1.5;
+  stroke: palevioletred;
+  stroke-width: 2.5;
+  opacity: 0.3;
+
   /*stroke-dasharray: 1px;*/
 }
-
 
 #line_7 {
   fill: none;
-  stroke: gray;
-  stroke-width: 1.5;
+  stroke: greenyellow;
+  stroke-width: 2.5;
+  opacity: 0.3;
+
   /*stroke-dasharray: 1px;*/
 }
 
-#checkbox-container{
+#checkbox-container {
   margin-left: 45px;
 }
 
-input{
-  margin-right:6px;
+input {
+  margin-right: 6px;
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 5px;
+  border-color: white;
 }
 
-.checkbox-inline{
+.checkbox-inline {
   margin-right: 15px;
 }
 
@@ -107,7 +120,7 @@ input{
   visibility: hidden;
   opacity: 0;
   display: inline-block;
-  background-color: rgba(119, 117, 117, 0.822);
+  background-color: rgba(119, 117, 117, 0.322);
   color: #fff;
   text-align: center;
   padding: 5px 5px 5px 5px;
@@ -127,7 +140,7 @@ input{
   font-weight: 600;
 }
 
-#card-text{
+#card-text {
   padding-top: 15px;
 }
 
