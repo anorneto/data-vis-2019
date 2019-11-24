@@ -27,6 +27,12 @@ p {
   shape-rendering: crispEdges;
 }
 
+#line {
+  fill: none;
+  stroke: #2a9fd6;
+  stroke-width: 3;
+}
+
 #line_2 {
   fill: none;
   stroke: orange;
@@ -71,11 +77,16 @@ p {
   /*stroke-dasharray: 1px;*/
 }
 
+#checkbox-container{
+  margin-left: 45px;
+}
 
-#line {
-  fill: none;
-  stroke: #2a9fd6;
-  stroke-width: 3;
+input{
+  margin-right:6px;
+}
+
+.checkbox-inline{
+  margin-right: 15px;
 }
 
 .dot {
@@ -95,7 +106,7 @@ p {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  display: block;
+  display: inline-block;
   background-color: rgba(119, 117, 117, 0.822);
   color: #fff;
   text-align: center;
