@@ -13,8 +13,6 @@
   </head>
 
   <body>
-    <button id="start">Start Time Animation</button>
-    <button id="reset">Reset</button>
 
     <div class="flex-container">
       <!-- Create a div where the graph will take place -->
@@ -43,15 +41,25 @@
     <div id="checkbox-container">
       <form>
         <label class="checkbox-inline">
-          <input id="option-1" type="checkbox" value="1" />Option 1
+          <input id="real_usd" type="checkbox" />Real_USD
         </label>
         <label class="checkbox-inline">
-          <input type="checkbox" value="2" />Option 2
+          <input id="petrobras" type="checkbox" />Petrobras
         </label>
         <label class="checkbox-inline">
-          <input type="checkbox" value="3" />Option 3
+          <input id="vale" type="checkbox"  />Vale
         </label>
+        <label class="checkbox-inline">
+            <input id="eletrobras" type="checkbox"  />Eletrobras
+          </label>
       </form>
+      <label class="checkbox-inline">
+            <input id="ambev" type="checkbox"  />Ambev
+          </label>
+      </form>
+      <label class="checkbox-inline">
+          <input id="ifix" type="checkbox"  />Índice de Fundos Imobiliários
+        </label>
     </div>
     <button onclick="search('ibovespa')">Testar Pesquisa Ibovespa</button>
 
@@ -61,7 +69,7 @@
         width = 1200 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
       //GLOBAL VARiABLES
-      var DEBUG_FLAG = true;
+      var DEBUG_FLAG = false;
       var MAXDATAPOINTS = 20;
       var dotRadius = 6;
       var xScale;
@@ -231,10 +239,12 @@
                   .join(".");
               });
 
-              // Add the line
+              d3.select("#real_usd").on("change", function() {
 
-              d3.select("#option-1").on("click", function() {
-                var path_2 = svg
+                var x = document.getElementById('real_usd').checked; 
+                
+                if (x == true) {
+                  var path_2 = svg
                   .append("path")
                   .datum(data)
                   .attr("id", "line_2")
@@ -263,6 +273,8 @@
                   );
 
                 var totalLength_2 = +path_2.node().getTotalLength();
+                d3.select("#line_2").lower();
+
 
                 path_2
                   .attr("stroke-dasharray", totalLength_2 + " " + totalLength_2)
@@ -279,14 +291,388 @@
                       .attr("stroke-dasharray", 2.5);
                   }); // Set final value of dash-offset for transition
                 // Set Properties of Dash Array and Dash Offset and initiate Transition
+                  
+                } else {
+                  d3.select("#line_2").remove();
+                }
+
+              });
+              
+            });
+
+
+          d3.csv(
+            "https://raw.githubusercontent.com/anorneto/data-vis-2019/master/data/PETR4.csv"
+          ).then(
+            // Now I can use this dataset:
+            function(data) {
+              data.forEach(function(d) {
+                d.date = d3.timeParse("%d.%m.%Y")(d.date);
+                d.last = d.last
+                  .slice(0, -1)
+                  .split(",")
+                  .join("."); 
+                
               });
 
-              d3.select("#reset").on("click", function() {
-                d3.select("#line_2").remove();
+              d3.select("#petrobras").on("change", function() {
+
+                var x = document.getElementById('petrobras').checked; 
+                
+                if (x == true) {
+                  var path_3 = svg
+                  .append("path")
+                  .datum(data)
+                  .attr("id", "line_3")
+                  .attr(
+                    "d",
+                    d3
+                      .line()
+                      .x(function(d) {
+                        return xScale(d.date);
+                      })
+                      .y(function(d) {
+                        return yScale(
+                          ((+d.last -
+                            d3.min(data, function(d) {
+                              return +d.last;
+                            })) /
+                            (d3.max(data, function(d) {
+                              return +d.last;
+                            }) -
+                              d3.min(data, function(d) {
+                                return +d.last;
+                              }))) *
+                            10
+                        );
+                      })
+                  );
+
+                var totalLength_3 = +path_3.node().getTotalLength();                
+                d3.select("#line_3").lower();
+
+                path_3
+                  .attr("stroke-dasharray", totalLength_3 + " " + totalLength_3)
+                  .attr("stroke-dashoffset", -totalLength_3)
+                  .transition() // Call Transition Method
+                  .delay(0)
+                  .duration(4000) // Set Duration timing (ms)
+                  .ease(d3.easeLinear) // Set Easing option
+                  .attr("stroke-dashoffset", 0)
+                  .on("end", function() {
+                    path_3
+                      .attr("stroke-dasharray", 0)
+                      .transition(3000)
+                      .attr("stroke-dasharray", 2.5);
+                  }); // Set final value of dash-offset for transition
+                // Set Properties of Dash Array and Dash Offset and initiate Transition
+                  
+                } else {
+                  d3.select("#line_3").remove();
+                }
+
+              });
+              
+
+              d3.csv(
+            "https://raw.githubusercontent.com/anorneto/data-vis-2019/master/data/VALE3.csv"
+          ).then(
+            // Now I can use this dataset:
+            function(data) {
+              data.forEach(function(d) {
+                d.date = d3.timeParse("%d.%m.%Y")(d.date);
+                d.last = d.last
+                  .slice(0, -1)
+                  .split(",")
+                  .join("."); 
               });
 
-            }
-          );
+              d3.select("#vale").on("change", function() {
+
+                var x = document.getElementById('vale').checked; 
+                
+                if (x == true) {
+                  var path_4 = svg
+                  .append("path")
+                  .datum(data)
+                  .attr("id", "line_4")
+                  .attr(
+                    "d",
+                    d3
+                      .line()
+                      .x(function(d) {
+                        return xScale(d.date);
+                      })
+                      .y(function(d) {
+                        return yScale(
+                          ((+d.last -
+                            d3.min(data, function(d) {
+                              return +d.last;
+                            })) /
+                            (d3.max(data, function(d) {
+                              return +d.last;
+                            }) -
+                              d3.min(data, function(d) {
+                                return +d.last;
+                              }))) *
+                            10
+                        );
+                      })
+                  );
+
+                var totalLength_4 = +path_4.node().getTotalLength();
+                d3.select("#line_4").lower();
+
+                path_4
+                  .attr("stroke-dasharray", totalLength_4 + " " + totalLength_4)
+                  .attr("stroke-dashoffset", -totalLength_4)
+                  .transition() // Call Transition Method
+                  .delay(0)
+                  .duration(4000) // Set Duration timing (ms)
+                  .ease(d3.easeLinear) // Set Easing option
+                  .attr("stroke-dashoffset", 0)
+                  .on("end", function() {
+                    path_4
+                      .attr("stroke-dasharray", 0)
+                      .transition(3000)
+                      .attr("stroke-dasharray", 2.5);
+                  }); // Set final value of dash-offset for transition
+                // Set Properties of Dash Array and Dash Offset and initiate Transition
+                  
+                } else {
+                  d3.select("#line_4").remove();
+                }
+
+              });
+              
+
+              d3.csv(
+            "https://raw.githubusercontent.com/anorneto/data-vis-2019/master/data/ELET3.csv"
+          ).then(
+            // Now I can use this dataset:
+            function(data) {
+              data.forEach(function(d) {
+                d.date = d3.timeParse("%d.%m.%Y")(d.date);
+                d.last = d.last
+                  .slice(0, -1)
+                  .split(",")
+                  .join("."); 
+              });
+
+              d3.select("#eletrobras").on("change", function() {
+
+                var x = document.getElementById('eletrobras').checked; 
+                
+                if (x == true) {
+                  var path_5 = svg
+                  .append("path")
+                  .datum(data)
+                  .attr("id", "line_5")
+                  .attr(
+                    "d",
+                    d3
+                      .line()
+                      .x(function(d) {
+                        return xScale(d.date);
+                      })
+                      .y(function(d) {
+                        return yScale(
+                          ((+d.last -
+                            d3.min(data, function(d) {
+                              return +d.last;
+                            })) /
+                            (d3.max(data, function(d) {
+                              return +d.last;
+                            }) -
+                              d3.min(data, function(d) {
+                                return +d.last;
+                              }))) *
+                            10
+                        );
+                      })
+                  );
+
+                var totalLength_5 = +path_5.node().getTotalLength();
+                d3.select("#line_5").lower();
+
+                path_5
+                  .attr("stroke-dasharray", totalLength_5 + " " + totalLength_5)
+                  .attr("stroke-dashoffset", -totalLength_5)
+                  .transition() // Call Transition Method
+                  .delay(0)
+                  .duration(4000) // Set Duration timing (ms)
+                  .ease(d3.easeLinear) // Set Easing option
+                  .attr("stroke-dashoffset", 0)
+                  .on("end", function() {
+                    path_5
+                      .attr("stroke-dasharray", 0)
+                      .transition(3000)
+                      .attr("stroke-dasharray", 2.5);
+                  }); // Set final value of dash-offset for transition
+                // Set Properties of Dash Array and Dash Offset and initiate Transition
+                  
+                } else {
+                  d3.select("#line_5").remove();
+                }
+
+              });
+
+              d3.csv(
+            "https://raw.githubusercontent.com/anorneto/data-vis-2019/master/data/ABEV3.csv"
+          ).then(
+            // Now I can use this dataset:
+            function(data) {
+              data.forEach(function(d) {
+                d.date = d3.timeParse("%d.%m.%Y")(d.date);
+                d.last = d.last
+                  .slice(0, -1)
+                  .split(",")
+                  .join("."); 
+
+              });
+
+              d3.select("#ambev").on("change", function() {
+
+                var x = document.getElementById('ambev').checked; 
+
+                if (x == true) {
+                  var path_6 = svg
+                  .append("path")
+                  .datum(data)
+                  .attr("id", "line_6")
+                  .attr(
+                    "d",
+                    d3
+                      .line()
+                      .x(function(d) {
+                        return xScale(d.date);
+                      })
+                      .y(function(d) {
+                        return yScale(
+                          ((+d.last -
+                            d3.min(data, function(d) {
+                              return +d.last;
+                            })) /
+                            (d3.max(data, function(d) {
+                              return +d.last;
+                            }) -
+                              d3.min(data, function(d) {
+                                return +d.last;
+                              }))) *
+                            10
+                        );
+                      })
+                  );
+
+                var totalLength_6 = +path_6.node().getTotalLength();
+                d3.select("#line_6").lower();
+
+                path_6
+                  .attr("stroke-dasharray", totalLength_6 + " " + totalLength_6)
+                  .attr("stroke-dashoffset", -totalLength_6)
+                  .transition() // Call Transition Method
+                  .delay(0)
+                  .duration(4000) // Set Duration timing (ms)
+                  .ease(d3.easeLinear) // Set Easing option
+                  .attr("stroke-dashoffset", 0)
+                  .on("end", function() {
+                    path_6
+                      .attr("stroke-dasharray", 0)
+                      .transition(3000)
+                      .attr("stroke-dasharray", 2.5);
+                  }); // Set final value of dash-offset for transition
+                // Set Properties of Dash Array and Dash Offset and initiate Transition
+                  
+                } else {
+                  d3.select("#line_6").remove();
+                }
+
+              });
+
+              d3.csv(
+            "https://raw.githubusercontent.com/anorneto/data-vis-2019/master/data/ifix.csv"
+          ).then(
+            // Now I can use this dataset:
+            function(data) {
+              data.forEach(function(d) {
+                d.date = d3.timeParse("%d.%m.%Y")(d.date);
+                d.last = d.last 
+              });
+
+              d3.select("#ifix").on("change", function() {
+
+                var x = document.getElementById('ifix').checked; 
+                
+                if (x == true) {
+                  var path_7 = svg
+                  .append("path")
+                  .datum(data)
+                  .attr("id", "line_7")
+                  .attr(
+                    "d",
+                    d3
+                      .line()
+                      .x(function(d) {
+                        return xScale(d.date);
+                      })
+                      .y(function(d) {
+                        return yScale(
+                          ((+d.last -
+                            d3.min(data, function(d) {
+                              return +d.last;
+                            })) /
+                            (d3.max(data, function(d) {
+                              return +d.last;
+                            }) -
+                              d3.min(data, function(d) {
+                                return +d.last;
+                              }))) *
+                            10
+                        );
+                      })
+                  );
+
+                var totalLength_7 = +path_7.node().getTotalLength();                
+                d3.select("#line_7").lower();
+
+                path_7
+                  .attr("stroke-dasharray", totalLength_7 + " " + totalLength_7)
+                  .attr("stroke-dashoffset", -totalLength_7)
+                  .transition() // Call Transition Method
+                  .delay(0)
+                  .duration(4000) // Set Duration timing (ms)
+                  .ease(d3.easeLinear) // Set Easing option
+                  .attr("stroke-dashoffset", 0)
+                  .on("end", function() {
+                    path_7
+                      .attr("stroke-dasharray", 0)
+                      .transition(3000)
+                      .attr("stroke-dasharray", 2.5);
+                  }); // Set final value of dash-offset for transition
+                // Set Properties of Dash Array and Dash Offset and initiate Transition
+                  
+                } else {
+                  d3.select("#line_7").remove();
+                }
+
+              });
+
+              
+              
+            });
+              
+            });
+              
+            });
+
+
+
+            });
+
+
+            });
+
+
         }
       );
 
