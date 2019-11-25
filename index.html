@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
     <script src="search.js"></script>
     <h1 id="page-title">
-      Data-Vis 2019-2 | Grupo: Anor Neto e Bruno Barroso aka AB Corp
+      Data-Vis 2019-2 | Grupo: Anor Neto e Bruno Barroso
     </h1>
   </head>
 
@@ -19,22 +19,22 @@
         <div id="my_dataviz"></div>
         <div id="checkbox-container">
           <form>
-            <label class="checkbox-inline">
-              <input id="real_usd" type="checkbox" />Real_USD
+            <label class="checkbox-inline" style = "color:orange">
+              <input id="real_usd" type="checkbox"/>Real_USD
             </label>
-            <label class="checkbox-inline">
+            <label class="checkbox-inline" style = "color:white">
               <input id="petrobras" type="checkbox" />Petrobras
             </label>
-            <label class="checkbox-inline">
+            <label class="checkbox-inline" style = "color:red">
               <input id="vale" type="checkbox" />Vale
             </label>
-            <label class="checkbox-inline">
+            <label class="checkbox-inline" style = "color:green">
               <input id="eletrobras" type="checkbox" />Eletrobras
             </label>
-            <label class="checkbox-inline">
+            <label class="checkbox-inline" style = "color:palevioletred">
               <input id="ambev" type="checkbox" />Ambev
             </label>
-            <label class="checkbox-inline">
+            <label class="checkbox-inline" style = "color:greenyellow">
               <input id="ifix" type="checkbox" />Índice de Fundos Imobiliários
             </label>
           </form>
@@ -284,13 +284,13 @@
                     .delay(0)
                     .duration(4000) // Set Duration timing (ms)
                     .ease(d3.easeLinear) // Set Easing option
-                    .attr("stroke-dashoffset", 0)
-                    .on("end", function() {
-                      path_2
-                        .attr("stroke-dasharray", 0)
-                        .transition(3000)
-                        .attr("stroke-dasharray", 2.5);
-                    }); // Set final value of dash-offset for transition
+                    .attr("stroke-dashoffset", 0);
+                  //  .on("end", function() {
+                  //    path_2
+                  //      .attr("stroke-dasharray", 0)
+                  //      .transition(3000)
+                  //      .attr("stroke-dasharray", 2.5);
+                  //  }); // Set final value of dash-offset for transition
                   // Set Properties of Dash Array and Dash Offset and initiate Transition
                 } else {
                   d3.select("#line_2").remove();
@@ -357,13 +357,13 @@
                     .delay(0)
                     .duration(4000) // Set Duration timing (ms)
                     .ease(d3.easeLinear) // Set Easing option
-                    .attr("stroke-dashoffset", 0)
-                    .on("end", function() {
-                      path_3
-                        .attr("stroke-dasharray", 0)
-                        .transition(3000)
-                        .attr("stroke-dasharray", 2.5);
-                    }); // Set final value of dash-offset for transition
+                    .attr("stroke-dashoffset", 0);
+                  //  .on("end", function() {
+                  //    path_3
+                  //      .attr("stroke-dasharray", 0)
+                  //      .transition(3000)
+                  //      .attr("stroke-dasharray", 2.5);
+                  //  }); // Set final value of dash-offset for transition
                   // Set Properties of Dash Array and Dash Offset and initiate Transition
                 } else {
                   d3.select("#line_3").remove();
@@ -428,13 +428,13 @@
                         .delay(0)
                         .duration(4000) // Set Duration timing (ms)
                         .ease(d3.easeLinear) // Set Easing option
-                        .attr("stroke-dashoffset", 0)
-                        .on("end", function() {
-                          path_4
-                            .attr("stroke-dasharray", 0)
-                            .transition(3000)
-                            .attr("stroke-dasharray", 2.5);
-                        }); // Set final value of dash-offset for transition
+                        .attr("stroke-dashoffset", 0);
+                      //  .on("end", function() {
+                      //    path_4
+                      //      .attr("stroke-dasharray", 0)
+                      //      .transition(3000)
+                      //      .attr("stroke-dasharray", 2.5);
+                      //  }); // Set final value of dash-offset for transition
                       // Set Properties of Dash Array and Dash Offset and initiate Transition
                     } else {
                       d3.select("#line_4").remove();
@@ -499,13 +499,13 @@
                             .delay(0)
                             .duration(4000) // Set Duration timing (ms)
                             .ease(d3.easeLinear) // Set Easing option
-                            .attr("stroke-dashoffset", 0)
-                            .on("end", function() {
-                              path_5
-                                .attr("stroke-dasharray", 0)
-                                .transition(3000)
-                                .attr("stroke-dasharray", 2.5);
-                            }); // Set final value of dash-offset for transition
+                            .attr("stroke-dashoffset", 0);
+                          //  .on("end", function() {
+                          //    path_5
+                          //      .attr("stroke-dasharray", 0)
+                          //      .transition(3000)
+                          //      .attr("stroke-dasharray", 2.5);
+                          //  }); // Set final value of dash-offset for transition
                           // Set Properties of Dash Array and Dash Offset and initiate Transition
                         } else {
                           d3.select("#line_5").remove();
@@ -572,13 +572,13 @@
                                 .delay(0)
                                 .duration(4000) // Set Duration timing (ms)
                                 .ease(d3.easeLinear) // Set Easing option
-                                .attr("stroke-dashoffset", 0)
-                                .on("end", function() {
-                                  path_6
-                                    .attr("stroke-dasharray", 0)
-                                    .transition(3000)
-                                    .attr("stroke-dasharray", 2.5);
-                                }); // Set final value of dash-offset for transition
+                                .attr("stroke-dashoffset", 0);
+                              //  .on("end", function() {
+                              //    path_6
+                              //      .attr("stroke-dasharray", 0)
+                              //      .transition(3000)
+                              //      .attr("stroke-dasharray", 2.5);
+                              //  }); // Set final value of dash-offset for transition
                               // Set Properties of Dash Array and Dash Offset and initiate Transition
                             } else {
                               d3.select("#line_6").remove();
@@ -642,13 +642,13 @@
                                     .delay(0)
                                     .duration(4000) // Set Duration timing (ms)
                                     .ease(d3.easeLinear) // Set Easing option
-                                    .attr("stroke-dashoffset", 0)
-                                    .on("end", function() {
-                                      path_7
-                                        .attr("stroke-dasharray", 0)
-                                        .transition(3000)
-                                        .attr("stroke-dasharray", 2.5);
-                                    }); // Set final value of dash-offset for transition
+                                    .attr("stroke-dashoffset", 0);
+                                  //  .on("end", function() {
+                                  //    path_7
+                                  //      .attr("stroke-dasharray", 0)
+                                  //      .transition(3000)
+                                  //      .attr("stroke-dasharray", 2.5);
+                                  //  }); // Set final value of dash-offset for transition
                                   // Set Properties of Dash Array and Dash Offset and initiate Transition
                                 } else {
                                   d3.select("#line_7").remove();
