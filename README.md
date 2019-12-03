@@ -3,11 +3,8 @@
 ## TODO :
 
 - [x] Marcar Pontos de interesse
-- [ ] Plotar os outros ativos
-- [ ] Selecionar ativos visiveis
+- [x] Plotar os outros ativos
+- [x] Selecionar ativos visiveis
 - [x] Mostrar Menu lateral direita
-- [ ] customizar axis -> https://observablehq.com/@d3/styled-axes
 - [x] pegar noticias de algum lugar ( manual? ou crawl do google?)
-- [ ] gerar word cloud no menu lateral referente as notícias do dia
-- [ ] Desenhar outras linha sempre atras da ibovespa
-- [ ] **DEIXAR BONITO**
+- [x] Desenhar outras linha sempre atras da ibovespa
